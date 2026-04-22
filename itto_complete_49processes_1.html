@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>信息系统项目管理师 · 五大过程组×十大知识领域 完整ITTO</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+:root {
+  --bg: #f4f1ec;
+  --surface: #ffffff;
+  --border: #ddd8d0;
+  --text: #1c1a17;
+  --muted: #7a7470;
+
+  /* 五大过程组色 */
+  --pg-start:   #1a6b8a; --pg-start-bg:  #e8f4f8;
+  --pg-plan:    #2d7a3a; --pg-plan-bg:   #eaf5ec;
+  --pg-exec:    #8a5a1a; --pg-exec-bg:   #fdf4e7;
+  --pg-monitor: #6b1a6b; --pg-monitor-bg:#f5eaf5;
+  --pg-close:   #1a3a6b; --pg-close-bg:  #eaeff8;
+
+  /* 十大领域色 */
+  --a1:#c84b31; --a1b:#fdf0ed;
+  --a2:#1a6b8a; --a2b:#e8f4f8;
+  --a3:#5a3e8a; --a3b:#f0ecf8;
+  --a4:#1e7a4a; --a4b:#eaf5ef;
+  --a5:#a33060; --a5b:#faedf3;
+  --a6:#7a5c10; --a6b:#fdf5e6;
+  --a7:#1a4f8a; --a7b:#eaf0f8;
+  --a8:#7a1a6b; --a8b:#f8eaf5;
+  --a9:#1a7a5a; --a9b:#eaf5f0;
+  --a10:#8a4a1a;--a10b:#f8f0ea;
+
+  /* ITTO tag colors */
+  --ti:#1a4f8a; --ti-bg:#eef3fb;
+  --tt:#1e6b3a; --tt-bg:#edf7f1;
+  --to:#a34010; --to-bg:#fdf1eb;
+  --tp:#5a3e8a; --tp-bg:#f5f2ff; /* paper purple */
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans SC',sans-serif;font-size:13px;line-height:1.7;}
+
+/* HEADER */
+header{background:var(--text);color:#f4f1ec;padding:44px 24px 36px;text-align:center;}
+header h1{font-family:'Noto Serif SC',serif;font-size:clamp(18px,3.5vw,32px);font-weight:900;letter-spacing:3px;margin-bottom:8px;}
+header p{color:#a09a94;font-size:12px;letter-spacing:2px;}
+.hlegend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px;}
+.hltag{font-size:11px;padding:4px 12px;border-radius:20px;font-weight:600;}
+
+/* STICKY NAV */
+.sticky-nav{position:sticky;top:0;z-index:200;background:rgba(244,241,236,0.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;gap:5px;flex-wrap:wrap;justify-content:center;}
+.snav{font-size:11px;padding:4px 11px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--muted);cursor:pointer;text-decoration:none;transition:all .15s;}
+.snav:hover{background:var(--text);color:#f4f1ec;border-color:var(--text);}
+
+/* PROCESS GROUP BADGE */
+.pg-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;letter-spacing:.5px;}
+
+/* AREA SECTION */
+.area-wrap{max-width:1080px;margin:40px auto;padding:0 18px;}
+.area-hd{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--border);}
+.area-num{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;flex-shrink:0;}
+.area-title{font-family:'Noto Serif SC',serif;font-size:17px;font-weight:700;}
+.area-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.area-desc{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:13px 17px;margin-bottom:14px;font-size:12.5px;color:#3a3530;line-height:1.85;}
+.area-desc strong{color:var(--text);}
+
+/* PROCESS CARD */
+.proc-stack{display:flex;flex-direction:column;gap:14px;}
+.pc{background:var(--surface);border:1px solid var(--border);border-radius:11px;overflow:hidden;}
+.pc-hd{padding:12px 18px;display:flex;align-items:center;gap:9px;border-bottom:1px solid var(--border);}
+.pc-name{font-size:14px;font-weight:700;font-family:'Noto Serif SC',serif;}
+.pc-desc{font-size:11px;color:var(--muted);margin-left:auto;white-space:nowrap;}
+.pc-body{padding:14px 18px;display:flex;flex-direction:column;gap:11px;}
+
+/* WHAT IS */
+.wi{background:#fafaf8;border-left:3px solid #c8c0b8;padding:11px 14px;border-radius:0 7px 7px 0;font-size:12.5px;color:#454038;line-height:1.85;}
+.wi strong{color:var(--text);}
+
+/* ITTO */
+.itto-wrap{display:flex;flex-direction:column;gap:7px;}
+.itto-row{display:flex;flex-direction:column;gap:4px;}
+.il{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+.tags{display:flex;flex-wrap:wrap;gap:4px;}
+.ti{font-size:11.5px;padding:3px 9px;border-radius:5px;background:var(--ti-bg);color:var(--ti);border:1px solid #c5d5f0;}
+.tt{font-size:11.5px;padding:3px 9px;border-radius:5px;background:var(--tt-bg);color:var(--tt);border:1px solid #bde0c8;}
+.to{font-size:11.5px;padding:3px 9px;border-radius:5px;background:var(--to-bg);color:var(--to);border:1px solid #f5c8a8;}
+
+/* PAPER BOX */
+.pb{background:var(--tp-bg);border:1px solid #c4b5fd;border-radius:7px;padding:12px 16px;}
+.pb-label{font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--tp);text-transform:uppercase;margin-bottom:7px;display:flex;align-items:center;gap:5px;}
+.pb-label::before{content:'✍️';}
+.pe{font-size:12px;color:#3a2a5a;line-height:2;}
+.pe .k{background:#e9e3ff;padding:1px 5px;border-radius:3px;font-weight:700;color:var(--tp);}
+.pe .b{color:#a090b0;font-style:italic;}
+
+footer{text-align:center;padding:28px;color:var(--muted);font-size:11px;border-top:1px solid var(--border);margin-top:40px;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>五大过程组 × 十大知识领域 · ITTO完整版</h1>
+  <p>全部49个子过程 · 含白话解释 · 含论文套用句式</p>
+  <div class="hlegend">
+    <span class="hltag" style="background:#eef3fb;color:#1a4f8a">🔵 蓝色 = 输入 Input</span>
+    <span class="hltag" style="background:#edf7f1;color:#1e6b3a">🟢 绿色 = 工具与技术 Tools</span>
+    <span class="hltag" style="background:#fdf1eb;color:#a34010">🟠 橙色 = 输出 Output</span>
+    <span class="hltag" style="background:#f5f2ff;color:#5a3e8a">🟣 紫色 = 论文必写关键词</span>
+  </div>
+</header>
+
+<nav class="sticky-nav">
+  <a class="snav" href="#a1">01整合</a>
+  <a class="snav" href="#a2">02范围</a>
+  <a class="snav" href="#a3">03进度</a>
+  <a class="snav" href="#a4">04成本</a>
+  <a class="snav" href="#a5">05质量</a>
+  <a class="snav" href="#a6">06资源</a>
+  <a class="snav" href="#a7">07沟通</a>
+  <a class="snav" href="#a8">08风险</a>
+  <a class="snav" href="#a9">09采购</a>
+  <a class="snav" href="#a10">10干系人</a>
+</nav>
+
+<!-- ═══════════════════════════════ 01 整合管理 ═══════════════════════════════ -->
+<div class="area-wrap" id="a1">
+  <div class="area-hd">
+    <div class="area-num" style="background:var(--a1b);color:var(--a1)">01</div>
+    <div>
+      <div class="area-title" style="color:var(--a1)">项目整合管理 — 7个过程</div>
+      <div class="area-sub">启动1 · 规划1 · 执行2 · 监控2 · 收尾1</div>
+    </div>
+  </div>
+  <div class="area-desc">
+    <strong>整合管理是项目经理最核心的职责</strong>，负责把其他九个领域"粘合"在一起统筹协调。打比方：整合管理是乐队指挥，其他领域是各乐手。核心线索：<strong>章程→计划→执行→知识→监控→变更控制→收尾</strong>。论文必写亮点：<strong>变更控制（CCB）</strong>和<strong>整体计划整合</strong>。
+  </div>
+  <div class="proc-stack">
+
+    <!-- P1.1 制定项目章程 -->
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a1b)">
+        <span class="pg-badge" style="background:var(--pg-start);color:#fff">启动</span>
+        <span class="pc-name">1.1 制定项目章程</span>
+        <span class="pc-desc">正式授权项目存在</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 项目章程是项目的"出生证明"，正式授权项目存在，明确项目目标、项目经理权力及初始资源。没有章程，项目经理无权调配资源。<br><strong>记忆钩：</strong>商业文件→专家+会议→章程+假设日志。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">商业文件（商业论证+效益管理计划）</span><span class="ti">协议（合同/MOU）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据收集（头脑风暴/焦点小组/访谈）</span><span class="tt">人际关系与团队技能（冲突管理/引导/会议管理）</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">项目章程</span><span class="to">假设日志</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在项目<span class="k">启动阶段</span>，我依据<span class="b">（甲方合同/商业论证文件）</span>，组织<span class="k">启动会议</span>，运用<span class="k">专家判断</span>和<span class="k">访谈</span>收集高层需求，制定了<span class="k">项目章程</span>，明确了项目目标、项目经理权限及初始资源投入，同时建立<span class="k">假设日志</span>记录关键假设，为后续规划奠定基础。</div></div>
+      </div>
+    </div>
+
+    <!-- P1.2 制定项目管理计划 -->
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a1b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">1.2 制定项目管理计划</span>
+        <span class="pc-desc">整合所有子计划的"宪法"</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 把9个领域的子计划和3大基准（范围/进度/成本）整合成一份总计划，是项目执行的最高纲领。<br><strong>记忆钩：</strong>输入=章程+所有其他规划输出；输出=唯一的"项目管理计划"。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目章程</span><span class="ti">其他规划过程输出（各子计划）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据收集（头脑风暴/核对单/焦点小组/访谈）</span><span class="tt">人际关系与团队技能（冲突管理/引导）</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">项目管理计划（含所有子计划+三大基准）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">规划阶段</span>，我主持<span class="k">规划会议</span>，运用<span class="k">专家判断</span>将范围、进度、成本、质量、资源、沟通、风险、采购、干系人九个子计划<span class="k">整合</span>，形成了<span class="k">项目管理计划</span>，确立了三大基准（<span class="k">范围基准、进度基准、成本基准</span>），并明确了变更控制流程，作为项目执行的最高纲领。</div></div>
+      </div>
+    </div>
+
+    <!-- P1.3 指导与管理项目工作 -->
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a1b)">
+        <span class="pg-badge" style="background:var(--pg-exec);color:#fff">执行</span>
+        <span class="pc-name">1.3 指导与管理项目工作</span>
+        <span class="pc-desc">按计划推动实际工作，产出可交付成果</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 按照计划指挥团队"干活"，产出可交付成果，收集工作绩效数据，记录问题，提出变更请求。<br><strong>记忆钩：</strong>执行→可交付成果+绩效数据+问题日志+变更请求。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划</span><span class="ti">项目文件（经验教训/里程碑/沟通/进度/需求跟踪矩阵/风险）</span><span class="ti">批准的变更请求</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">项目管理信息系统PMIS</span><span class="tt">会议（项目例会/启动会）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">可交付成果</span><span class="to">工作绩效数据</span><span class="to">问题日志</span><span class="to">变更请求</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">执行阶段</span>，我依据<span class="k">项目管理计划</span>指导团队开展工作，借助<span class="k">PMIS</span>（<span class="b">Microsoft Project/禅道/Jira</span>）实时收集<span class="k">工作绩效数据</span>。期间共记录问题<span class="b">X</span>项于<span class="k">问题日志</span>，针对<span class="b">（某问题）</span>提出<span class="k">变更请求</span>经CCB审批后执行，最终按期产出<span class="b">（可交付成果名称）</span>。</div></div>
+      </div>
+    </div>
+
+    <!-- P1.4 管理项目知识 -->
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a1b)">
+        <span class="pg-badge" style="background:var(--pg-exec);color:#fff">执行</span>
+        <span class="pc-name">1.4 管理项目知识</span>
+        <span class="pc-desc">沉淀经验教训，传递隐性知识</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 利用现有知识并创造新知识，以实现项目目标并促进组织学习。核心输出是<strong>经验教训登记册</strong>，项目结束时并入组织过程资产。<br><strong>记忆钩：</strong>知识管理+信息管理→经验教训登记册。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划</span><span class="ti">项目文件（经验教训/项目团队派工单/资源分解结构/干系人登记册）</span><span class="ti">可交付成果</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">知识管理（社交媒体/工作跟踪/会议/专家访谈）</span><span class="tt">信息管理（经验教训库/文档管理系统）</span><span class="tt">人际关系与团队技能（主动倾听/引导/领导力/人际交往/政治意识）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">经验教训登记册</span><span class="to">项目管理计划更新</span><span class="to">组织过程资产更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">为促进组织知识积累，我在执行阶段同步开展<span class="k">管理项目知识</span>工作，定期组织团队通过<span class="k">知识分享会议</span>总结阶段经验，将<span class="b">（技术难点解决方案/流程优化措施）</span>等记录于<span class="k">经验教训登记册</span>，项目结束后并入<span class="k">组织过程资产</span>，为后续类似项目提供参考。</div></div>
+      </div>
+    </div>
+
+    <!-- P1.5 监控项目工作 -->
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a1b)">
+        <span class="pg-badge" style="background:var(--pg-monitor);color:#fff">监控</span>
+        <span class="pc-name">1.5 监控项目工作</span>
+        <span class="pc-desc">将绩效数据转化为绩效报告</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 跟踪、审查和报告项目整体进展，将工作绩效数据加工成<strong>工作绩效报告</strong>（如仪表盘、状态报告）提交给管理层和干系人。<br><strong>记忆钩：</strong>绩效数据→挣值分析/偏差/趋势→绩效报告+变更请求。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划</span><span class="ti">项目文件（假设日志/估算依据/成本预测/问题日志/经验教训/里程碑/质量报告/风险/进度预测）</span><span class="ti">工作绩效信息</span><span class="ti">协议</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据分析（挣值/偏差/趋势/根因）</span><span class="tt">决策</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">工作绩效报告（仪表盘/状态报告/热点报告）</span><span class="to">变更请求</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">监控阶段</span>，我每周对各领域<span class="k">工作绩效信息</span>进行汇总，运用<span class="k">挣值分析</span>和<span class="k">偏差分析</span>生成<span class="k">工作绩效报告</span>，以项目状态仪表盘形式向<span class="b">（公司高层/甲方）</span>汇报，确保各方及时了解项目状态，并据此提出所需的<span class="k">变更请求</span>。</div></div>
+      </div>
+    </div>
+
+    <!-- P1.6 实施整体变更控制 -->
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a1b)">
+        <span class="pg-badge" style="background:var(--pg-monitor);color:#fff">监控</span>
+        <span class="pc-name">1.6 实施整体变更控制</span>
+        <span class="pc-desc">CCB审批一切变更，保护基准不被随意修改</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 通过<strong>变更控制委员会（CCB）</strong>对所有变更请求进行正式审批，防止未经授权的变更破坏项目基准。批准的变更才能执行，拒绝的变更归档存档。<br><strong>记忆钩：</strong>变更请求→CCB会议→批准/拒绝→更新计划。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（变更管理计划/配置管理计划/范围/进度/成本基准）</span><span class="ti">项目文件（估算依据/需求跟踪矩阵/风险报告）</span><span class="ti">工作绩效报告</span><span class="ti">变更请求</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">变更控制工具（变更管理系统）</span><span class="tt">数据分析（备选方案/成本收益）</span><span class="tt">决策（投票/独裁/多标准）</span><span class="tt">会议（变更控制委员会CCB）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">批准的变更请求</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">为防止范围蔓延，我建立了<span class="k">整体变更控制</span>机制，成立由<span class="b">（甲方代表/技术负责人/项目经理）</span>组成的<span class="k">变更控制委员会（CCB）</span>。项目期间共受理变更请求<span class="b">X</span>项，经CCB会议评估对进度、成本、范围的影响后，批准<span class="b">X</span>项、拒绝<span class="b">X</span>项，所有结果更新至<span class="k">项目管理计划</span>，有效保护了三大基准的权威性。</div></div>
+      </div>
+    </div>
+
+    <!-- P1.7 结束项目或阶段 -->
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a1b)">
+        <span class="pg-badge" style="background:var(--pg-close);color:#fff">收尾</span>
+        <span class="pc-name">1.7 结束项目或阶段</span>
+        <span class="pc-desc">正式关闭项目，移交成果，沉淀经验</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 完成所有收尾活动：获得最终验收、移交产品/服务、释放资源、更新经验教训、存档项目文件。这是整个项目的"终点站"。<br><strong>记忆钩：</strong>验收的可交付成果→收尾→最终报告+移交+组织过程资产更新。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目章程</span><span class="ti">项目管理计划</span><span class="ti">项目文件（假设日志/估算依据/变更日志/问题日志/经验教训/里程碑/质量控制测量结果/质量报告/需求文件/风险）</span><span class="ti">验收的可交付成果</span><span class="ti">商业文件</span><span class="ti">协议</span><span class="ti">采购文件</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据分析（文件分析/回归/趋势/偏差分析）</span><span class="tt">会议（收尾会议）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">项目文件更新（经验教训登记册更新）</span><span class="to">最终产品/服务/成果移交</span><span class="to">最终报告</span><span class="to">组织过程资产更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在项目<span class="k">收尾阶段</span>，我组织召开<span class="k">收尾会议</span>，对照合同和需求逐项确认<span class="k">验收的可交付成果</span>，正式完成<span class="k">最终产品移交</span>。同时编制<span class="k">最终报告</span>，汇总项目绩效数据；将经验教训更新至<span class="k">组织过程资产</span>，释放团队资源，完成项目正式关闭。</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ 02 范围管理 ═══════════════════════════════ -->
+<div class="area-wrap" id="a2">
+  <div class="area-hd">
+    <div class="area-num" style="background:var(--a2b);color:var(--a2)">02</div>
+    <div>
+      <div class="area-title" style="color:var(--a2)">项目范围管理 — 6个过程</div>
+      <div class="area-sub">规划4 · 监控2 · 核心：WBS分解</div>
+    </div>
+  </div>
+  <div class="area-desc"><strong>解决"做什么/不做什么"</strong>的问题。核心产出是<strong>工作分解结构（WBS）</strong>和<strong>范围基准</strong>。防止<strong>范围蔓延（Scope Creep）</strong>是重点。注意：<strong>核实范围（客户验收）≠ 控制质量（内部检验）</strong>，先质控再给客户验收。</div>
+  <div class="proc-stack">
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a2b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">2.1 规划范围管理</span>
+        <span class="pc-desc">制定如何定义和控制范围的方法</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 制定<strong>范围管理计划</strong>和<strong>需求管理计划</strong>，规定后续范围工作怎么做、WBS怎么建、变更怎么控制等。是范围管理的"元计划"。<br><strong>记忆钩：</strong>输出只有两个计划，工具最简单（专家+数据分析+会议）。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目章程</span><span class="ti">项目管理计划（质量管理计划/项目生命周期描述/开发方法）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据分析（备选方案分析）</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">范围管理计划</span><span class="to">需求管理计划</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">规划范围管理</span>阶段，我召开规划会议，结合项目特点制定了<span class="k">范围管理计划</span>，明确了WBS的创建方式、范围变更的控制流程；同时制定了<span class="k">需求管理计划</span>，规定需求的收集、优先级排序和变更管理方式，为后续范围工作提供指引。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a2b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">2.2 收集需求</span>
+        <span class="pc-desc">从干系人处挖掘并记录需求</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 通过访谈、问卷、原型等手段，把干系人的需求"挖"出来，形成需求文件和需求跟踪矩阵（RTM）。RTM把每条需求和交付物对应，方便后期验收核对。<br><strong>记忆钩：</strong>工具最多（原型法/亲和图/思维导图都在这）；输出=需求文件+RTM。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目章程</span><span class="ti">项目管理计划（范围/需求/干系人参与计划）</span><span class="ti">项目文件（假设日志/经验教训/干系人登记册）</span><span class="ti">协议</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据收集（问卷/头脑风暴/访谈/焦点小组）</span><span class="tt">数据分析（文件分析）</span><span class="tt">决策（投票/多标准）</span><span class="tt">数据表现（亲和图/思维导图）</span><span class="tt">人际关系（名义小组）</span><span class="tt">系统交互图</span><span class="tt">原型法</span><span class="tt">标杆对照</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">需求文件</span><span class="to">需求跟踪矩阵RTM</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">收集需求</span>阶段，我采用<span class="k">访谈</span>和<span class="k">问卷调查</span>向<span class="b">（业务部门/最终用户）</span>收集了<span class="b">X</span>项功能性需求和<span class="b">X</span>项非功能性需求，并利用<span class="k">原型法</span>对关键界面进行演示确认。将成果整理为<span class="k">需求文件</span>，建立<span class="k">需求跟踪矩阵（RTM）</span>，确保每项需求可追溯至WBS工作包和最终交付物。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a2b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">2.3 定义范围</span>
+        <span class="pc-desc">写清楚做什么、不做什么</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 基于需求文件，详细描述项目和产品的范围，产出<strong>项目范围说明书</strong>（明确纳入范围和排除范围）。排除范围同样重要，防止"理所当然"的范围蔓延。<br><strong>记忆钩：</strong>需求文件→产品分析→范围说明书。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目章程</span><span class="ti">项目管理计划（范围管理计划）</span><span class="ti">项目文件（假设日志/需求文件/风险登记册）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据分析（备选方案分析）</span><span class="tt">决策（多标准）</span><span class="tt">人际关系与团队技能（引导）</span><span class="tt">产品分析（产品分解/需求分析/系统分析/价值分析）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">项目范围说明书（含排除事项）</span><span class="to">项目文件更新（假设日志/需求文件/需求跟踪矩阵/干系人登记册）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">定义范围</span>阶段，我运用<span class="k">产品分析</span>技术，对需求文件进行深入分析，形成<span class="k">项目范围说明书</span>。说明书详细描述了项目交付物（包含<span class="b">XX/XX/XX模块</span>），并明确列出了<span class="k">排除范围</span>（如<span class="b">XX功能不在本期范围内</span>），有效防止了后期的范围蔓延。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a2b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">2.4 创建WBS</span>
+        <span class="pc-desc">将项目逐层分解到可管理的工作包</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 用<strong>分解</strong>技术把项目可交付成果层层拆解，形成树状的WBS结构。最底层是"工作包"，可分配责任、估算工时。WBS+WBS词典+范围说明书=<strong>范围基准</strong>（三合一）。<br><strong>记忆钩：</strong>唯一工具=分解；唯一输出=范围基准。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（范围管理计划）</span><span class="ti">项目文件（项目范围说明书/需求文件）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产（WBS模板）</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">分解（逐层向下至工作包）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">范围基准（WBS + WBS词典 + 项目范围说明书）</span><span class="to">项目文件更新（假设日志/需求文件/需求跟踪矩阵）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">我运用<span class="k">分解</span>技术，将项目可交付成果逐层拆解，创建了<span class="k">工作分解结构（WBS）</span>，共分<span class="b">X</span>个层级、<span class="b">X</span>个工作包，涵盖<span class="b">需求分析/设计/开发/测试/部署/培训</span>等阶段。配套编制<span class="k">WBS词典</span>，对每个工作包的验收标准和责任人进行定义，与范围说明书共同构成<span class="k">范围基准</span>，为进度和成本估算提供基础。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a2b)">
+        <span class="pg-badge" style="background:var(--pg-monitor);color:#fff">监控</span>
+        <span class="pc-name">2.5 确认范围（核实范围）</span>
+        <span class="pc-desc">让客户正式签字验收可交付成果</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 将通过内部质量控制的可交付成果提交给客户，通过<strong>检查</strong>获得客户正式书面验收。注意先后顺序：<strong>控制质量（内部）→ 核实范围（客户验收）</strong>。<br><strong>记忆钩：</strong>核实的可交付成果→检查→验收的可交付成果（多了"验收"两字）。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（范围/需求管理计划/范围基准）</span><span class="ti">项目文件（经验教训/质量报告/需求文件/需求跟踪矩阵）</span><span class="ti">核实的可交付成果（已过质控）</span><span class="ti">工作绩效数据</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">检查（审查/产品评审/走查/审计）</span><span class="tt">决策（投票）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">验收的可交付成果（客户书面签字）</span><span class="to">工作绩效信息</span><span class="to">变更请求</span><span class="to">项目文件更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">各阶段可交付成果经内部<span class="k">控制质量</span>合格后，我组织甲方进行<span class="k">确认范围</span>，通过<span class="k">检查</span>和演示，对照<span class="k">需求跟踪矩阵</span>逐项确认功能实现情况。甲方对<span class="b">（XX模块）</span>签署书面验收确认，获得<span class="k">验收的可交付成果</span>，确保交付物满足合同要求。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a2b)">
+        <span class="pg-badge" style="background:var(--pg-monitor);color:#fff">监控</span>
+        <span class="pc-name">2.6 控制范围</span>
+        <span class="pc-desc">监控范围偏差，防止范围蔓延</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 持续监控项目和产品范围的状态，管控范围基准的变更。当实际范围与基准不符时，分析偏差原因，采取纠偏措施或提出变更请求。<br><strong>记忆钩：</strong>工作绩效数据→偏差/趋势分析→工作绩效信息+变更请求。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（范围管理计划/需求管理计划/变更管理计划/配置管理计划/范围基准/绩效测量基准）</span><span class="ti">项目文件（经验教训/需求文件/需求跟踪矩阵）</span><span class="ti">工作绩效数据</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">数据分析（偏差分析/趋势分析）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">工作绩效信息</span><span class="to">变更请求</span><span class="to">项目管理计划更新（范围基准/进度基准/成本基准）</span><span class="to">项目文件更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">控制范围</span>过程中，我定期运用<span class="k">偏差分析</span>，对比实际完成工作与<span class="k">范围基准</span>，发现<span class="b">（某干系人私下要求增加XX功能）</span>属于范围蔓延迹象，立即要求通过正式<span class="k">变更控制流程</span>处理，未经批准的工作不纳入执行，有效防止了范围失控。</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ 03 进度管理 ═══════════════════════════════ -->
+<div class="area-wrap" id="a3">
+  <div class="area-hd">
+    <div class="area-num" style="background:var(--a3b);color:var(--a3)">03</div>
+    <div>
+      <div class="area-title" style="color:var(--a3)">项目进度管理 — 6个过程</div>
+      <div class="area-sub">规划5 · 监控1 · 核心：关键路径CPM + 进度压缩</div>
+    </div>
+  </div>
+  <div class="area-desc"><strong>解决"什么时候做完"的问题。</strong>关键路径（最长路径）决定项目最短工期，关键路径上任何延误=项目延期。进度压缩两招：<strong>赶工（加资源，成本增加）</strong>和<strong>快速跟进（并行，风险增加）</strong>。论文必写：CPM+甘特图+进度偏差SV/SPI。</div>
+  <div class="proc-stack">
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a3b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">3.1 规划进度管理</span>
+        <span class="pc-desc">制定进度管理的方法和工具</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 制定<strong>进度管理计划</strong>，规定用什么方法（CPM/敏捷燃尽图）、什么工具（Project/Excel）来管理进度，以及如何设定基准和报告进度。<br><strong>记忆钩：</strong>输出只有一个=进度管理计划。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目章程</span><span class="ti">项目管理计划（范围管理计划/开发方法）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据分析（备选方案分析）</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">进度管理计划</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">规划进度管理</span>阶段，我制定了<span class="k">进度管理计划</span>，确定采用<span class="k">关键路径法（CPM）</span>编制进度计划，以<span class="b">Microsoft Project</span>作为进度管理工具，规定了进度偏差阈值（SPI&lt;<span class="b">0.9</span>时触发预警），明确了进度报告频率（<span class="b">每周一次</span>）。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a3b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">3.2 定义活动</span>
+        <span class="pc-desc">将WBS工作包进一步细化为可执行活动</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 把WBS的工作包继续向下分解成具体的"活动"，每个活动有明确的持续时间和资源需求，是进度排期的最小单位。同时确定里程碑节点。<br><strong>记忆钩：</strong>WBS工作包→分解→活动清单+里程碑清单。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（进度管理计划/范围基准）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">分解</span><span class="tt">滚动式规划（近细远粗）</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">活动清单</span><span class="to">活动属性（描述/前置/后置/资源需求/约束）</span><span class="to">里程碑清单</span><span class="to">变更请求</span><span class="to">项目管理计划更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">我将WBS工作包运用<span class="k">分解</span>进一步细化，共定义活动<span class="b">X</span>项，形成<span class="k">活动清单</span>及<span class="k">活动属性</span>，同时确定了<span class="b">X</span>个关键<span class="k">里程碑</span>（如<span class="b">需求确认/系统联调完成/用户验收）</span>，作为进度排期和监控的基础节点。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a3b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">3.3 排列活动顺序</span>
+        <span class="pc-desc">定义活动间依赖关系，画网络图</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 用<strong>紧前关系绘图法（PDM）</strong>确定活动之间的逻辑关系，画出进度网络图。四种依赖：FS（完成→开始，最常见）、FF（完成→完成）、SS（开始→开始）、SF（开始→完成，最罕见）。<br><strong>记忆钩：</strong>PDM→进度网络图；提前量（负滞后）可压缩工期。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（进度管理计划/范围基准）</span><span class="ti">项目文件（活动清单/活动属性/假设日志/里程碑清单）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">紧前关系绘图法PDM（FS/FF/SS/SF）</span><span class="tt">确定和整合依赖关系（强制/选择/外部/内部）</span><span class="tt">提前量与滞后量</span><span class="tt">项目管理信息系统PMIS</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">项目进度网络图</span><span class="to">项目文件更新（活动清单/活动属性/假设日志/里程碑清单）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">我运用<span class="k">紧前关系绘图法（PDM）</span>分析各活动依赖关系，绘制<span class="k">项目进度网络图</span>。将<span class="b">（系统测试与用户文档编写）</span>设为<span class="k">开始到开始（SS）</span>并行关系；对<span class="b">（数据迁移必须在测试完成后）</span>设强制性<span class="k">完成到开始（FS）</span>关系，为后续关键路径计算提供基础。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a3b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">3.4 估算活动持续时间</span>
+        <span class="pc-desc">预测每个活动需要多少时间</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 估算完成每个活动所需的工作时间。常用方法：类比估算（参考历史，快）、参数估算（工时=功能点×标准工时，中等）、三点估算/PERT（给出O悲观/P乐观/M最可能，E=(O+4M+P)/6，最精确）。<br><strong>记忆钩：</strong>四种估算方法（类比/参数/自下而上/三点）全在此；PERT公式E=(O+4M+P)/6。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（进度管理计划/范围基准）</span><span class="ti">项目文件（活动清单/活动属性/假设日志/经验教训/里程碑/项目团队派工单/资源分解结构/资源日历/资源需求/风险）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">类比估算</span><span class="tt">参数估算</span><span class="tt">三点估算PERT（E=(O+4M+P)/6）</span><span class="tt">自下而上估算</span><span class="tt">数据分析（备选/储备分析）</span><span class="tt">决策（多标准）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">持续时间估算</span><span class="to">估算依据</span><span class="to">项目文件更新（活动属性/假设日志/经验教训）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">估算活动持续时间</span>阶段，我综合运用<span class="k">类比估算</span>（参考同类历史项目）和<span class="k">三点估算（PERT）</span>，对<span class="b">X</span>项关键活动按乐观、悲观、最可能三种情景进行估算，通过公式<span class="k">E=(O+4M+P)/6</span>计算期望值，形成<span class="k">持续时间估算</span>及相应的<span class="k">估算依据</span>文件。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a3b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">3.5 制定进度计划</span>
+        <span class="pc-desc">形成进度基准，确定关键路径</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 综合网络图、持续时间估算、资源日历，用<strong>关键路径法（CPM）</strong>计算每个活动的最早/最晚开始和完成时间，确定关键路径，形成<strong>进度基准</strong>（甘特图）。工期太长则用进度压缩。<br><strong>记忆钩：</strong>CPM找关键路径；赶工=加资源加钱；快速跟进=并行做增风险。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（进度管理计划/范围基准）</span><span class="ti">项目文件（活动清单/活动属性/假设日志/估算依据/持续时间估算/经验教训/里程碑/进度网络图/项目团队派工单/资源日历/资源需求/风险）</span><span class="ti">协议</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">进度网络分析</span><span class="tt">关键路径法CPM（最早/最晚开始完成时间/总浮动/自由浮动）</span><span class="tt">资源优化（资源平衡/资源平滑）</span><span class="tt">数据分析（假设情景/蒙特卡罗模拟）</span><span class="tt">提前量与滞后量</span><span class="tt">进度压缩（赶工Crashing/快速跟进Fast Tracking）</span><span class="tt">PMIS（甘特图）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">进度基准</span><span class="to">项目进度计划（甘特图/里程碑图/网络图）</span><span class="to">进度数据</span><span class="to">项目日历</span><span class="to">变更请求</span><span class="to">项目管理计划更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">我运用<span class="k">关键路径法（CPM）</span>，通过<span class="k">PMIS</span>（<span class="b">Microsoft Project</span>）分析进度网络图，确定<span class="k">关键路径</span>为<span class="b">需求→设计→编码→测试→上线</span>，总工期<span class="b">X天</span>。因初始工期超出合同要求<span class="b">X天</span>，采用<span class="k">快速跟进</span>将<span class="b">系统测试与用户培训</span>并行执行，压缩工期<span class="b">X天</span>，最终形成经批准的<span class="k">进度基准</span>。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a3b)">
+        <span class="pg-badge" style="background:var(--pg-monitor);color:#fff">监控</span>
+        <span class="pc-name">3.6 控制进度</span>
+        <span class="pc-desc">监控SV/SPI，落后时采取压缩措施</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 定期对比实际进展与基准，计算SV（进度偏差=EV-PV，负=落后）和SPI（进度绩效指数=EV/PV，&lt;1=落后）。发现落后及时采用赶工或快速跟进追回进度。<br><strong>记忆钩：</strong>SPI&lt;1落后→赶工/快速跟进；SPI&gt;1超前（不一定是好事，可能资源浪费）。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（进度管理计划/进度基准/范围基准/绩效测量基准）</span><span class="ti">项目文件（经验教训/进度计划/进度数据/资源日历/风险）</span><span class="ti">工作绩效数据</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">数据分析（挣值EVM/迭代燃尽图/绩效审查/趋势分析/偏差分析/假设情景）</span><span class="tt">关键路径法</span><span class="tt">PMIS</span><span class="tt">资源优化</span><span class="tt">提前量与滞后量</span><span class="tt">进度压缩（赶工/快速跟进）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">工作绩效信息（SV/SPI）</span><span class="to">进度预测（EAC/ETC）</span><span class="to">变更请求</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">控制进度</span>过程中，每周通过<span class="k">挣值分析（EVM）</span>计算<span class="k">进度偏差SV</span>和<span class="k">进度绩效指数SPI</span>。第<span class="b">X</span>周发现SPI=<span class="b">0.85</span>，进度落后约<span class="b">15%</span>，原因为<span class="b">（接口联调复杂度超预期）</span>。采取<span class="k">赶工</span>措施增加<span class="b">X名</span>开发人员，并对非关键路径活动进行<span class="k">资源平衡</span>，最终将偏差控制在允许范围内。</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ 04 成本管理 ═══════════════════════════════ -->
+<div class="area-wrap" id="a4">
+  <div class="area-hd">
+    <div class="area-num" style="background:var(--a4b);color:var(--a4)">04</div>
+    <div>
+      <div class="area-title" style="color:var(--a4)">项目成本管理 — 4个过程</div>
+      <div class="area-sub">规划3 · 监控1 · 核心：EVM挣值管理</div>
+    </div>
+  </div>
+  <div class="area-desc"><strong>解决"钱够不够用/超不超支"的问题。</strong>核心工具<strong>挣值管理（EVM）</strong>把进度和成本合二为一：PV（计划值）/EV（挣值）/AC（实际成本）；CV=EV-AC（负=超支）；CPI=EV/AC（&lt;1=超支）；EAC=BAC/CPI（完工估算）；TCPI=(BAC-EV)/(BAC-AC)（完工尚需绩效指数）。</div>
+  <div class="proc-stack">
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a4b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">4.1 规划成本管理</span>
+        <span class="pc-desc">制定成本估算和预算的方法</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 制定<strong>成本管理计划</strong>，规定成本估算用什么方法、成本控制阈值是多少（如CPI&lt;0.9触发预警）、如何报告成本绩效等。<br><strong>记忆钩：</strong>规划四兄弟（范围/进度/成本/质量）的规划过程输出都只有一个计划，工具都是专家+分析+会议。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目章程</span><span class="ti">项目管理计划（进度管理计划/风险管理计划）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据分析（备选方案分析）</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">成本管理计划</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">我制定了<span class="k">成本管理计划</span>，规定采用<span class="k">自下而上估算</span>方法，以<span class="b">万元</span>为核算单位，CPI低于<span class="b">0.9</span>时触发成本预警，并明确了成本报告的频率（<span class="b">每月一次</span>）和格式，为后续估算和控制工作提供规范依据。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a4b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">4.2 估算成本</span>
+        <span class="pc-desc">预测完成项目各活动需要多少钱</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 对完成项目所需的各类资源成本做出近似估算，包含人工、设备、材料、软件等，还需分析并预留<strong>应急储备</strong>（已知风险）。<strong>管理储备</strong>（未知风险）由管理层控制，不计入成本基准。<br><strong>记忆钩：</strong>储备分析：应急储备（已知未知）纳入成本基准；管理储备（未知未知）不纳入基准。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（成本/质量/范围基准）</span><span class="ti">项目文件（经验教训/进度/风险/资源需求/资源日历）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">类比估算</span><span class="tt">参数估算</span><span class="tt">自下而上估算</span><span class="tt">三点估算PERT</span><span class="tt">数据分析（储备分析/质量成本COQ/备选方案）</span><span class="tt">PMIS</span><span class="tt">决策（多标准）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">成本估算</span><span class="to">估算依据</span><span class="to">项目文件更新（假设日志/经验教训/风险）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">估算成本</span>阶段，采用<span class="k">自下而上估算</span>，对WBS各工作包的<span class="b">（人工/硬件/软件/培训/差旅）</span>成本逐一估算后汇总，总额<span class="b">XXX万元</span>。同时运用<span class="k">储备分析</span>，预留<span class="k">应急储备</span><span class="b">X万元</span>应对已识别风险，形成<span class="k">成本估算</span>和详细的<span class="k">估算依据</span>文件。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a4b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">4.3 制定预算</span>
+        <span class="pc-desc">汇总成本估算，形成成本基准</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 将各活动成本估算汇总（加上应急储备）形成<strong>成本基准</strong>（S型成本曲线），再加上管理储备形成<strong>项目资金需求</strong>。成本基准是衡量实际花费的基准线。<br><strong>记忆钩：</strong>成本基准=成本估算+应急储备；项目资金需求=成本基准+管理储备。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（成本管理计划/资源管理计划/范围基准）</span><span class="ti">项目文件（估算依据/成本估算/进度/风险/资源日历/经验教训）</span><span class="ti">商业文件（商业论证/效益管理计划）</span><span class="ti">协议</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">成本汇总（由下而上汇总至项目层）</span><span class="tt">数据分析（储备分析/历史信息审查）</span><span class="tt">资金限制平衡</span><span class="tt">融资</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">成本基准（含应急储备的S型曲线）</span><span class="to">项目资金需求（成本基准+管理储备）</span><span class="to">项目文件更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">制定预算</span>阶段，我通过<span class="k">成本汇总</span>将各工作包成本逐层合并，加入<span class="k">应急储备</span><span class="b">X万元</span>后，形成总额<span class="b">XXX万元</span>的<span class="k">成本基准</span>；再加入<span class="k">管理储备</span><span class="b">X万元</span>，得出<span class="k">项目资金需求</span>为<span class="b">XXX万元</span>，上报公司审批后作为项目经费的控制上限。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a4b)">
+        <span class="pg-badge" style="background:var(--pg-monitor);color:#fff">监控</span>
+        <span class="pc-name">4.4 控制成本</span>
+        <span class="pc-desc">EVM监控超支，预测完工成本EAC</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 用挣值分析实时监控成本状态，预测完工成本EAC，及时发现超支并采取纠偏措施。<br>
+        <strong>核心公式：</strong><br>
+        · CV=EV-AC（成本偏差，负=超支）<br>
+        · CPI=EV/AC（成本绩效指数，&lt;1=超支）<br>
+        · EAC=BAC/CPI（完工估算，典型超支）<br>
+        · TCPI=(BAC-EV)/(BAC-AC)（完工尚需绩效指数，&gt;1=后续需更节省）</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（成本管理/成本基准/绩效测量基准）</span><span class="ti">项目文件（经验教训/风险）</span><span class="ti">项目资金需求</span><span class="ti">工作绩效数据（AC实际成本）</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据分析（挣值EVM/偏差分析/趋势分析/储备分析）</span><span class="tt">完工尚需绩效指数TCPI</span><span class="tt">PMIS</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">工作绩效信息（CV/CPI）</span><span class="to">成本预测（EAC/ETC）</span><span class="to">变更请求</span><span class="to">项目管理计划更新（成本基准/绩效测量基准）</span><span class="to">项目文件更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">控制成本</span>过程中，运用<span class="k">挣值管理（EVM）</span>监控成本状态。项目执行至第<span class="b">X周</span>时：PV=<span class="b">X万</span>，EV=<span class="b">X万</span>，AC=<span class="b">X万</span>，<span class="k">CV=EV-AC=<span class="b">-X万</span></span>（超支），<span class="k">CPI=<span class="b">0.92</span></span>。经分析原因为<span class="b">（外包人员超成本）</span>，通过提出<span class="k">变更请求</span>调整后续成本计划，并动用<span class="k">应急储备</span><span class="b">X万元</span>，将最终完工成本控制在<span class="k">成本基准</span>范围内。</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PART 2: Areas 5-10 -->
+<!-- ═══════════════════════════════ 05 质量管理 ═══════════════════════════════ -->
+<div class="area-wrap" id="a5">
+  <div class="area-hd">
+    <div class="area-num" style="background:var(--a5b);color:var(--a5)">05</div>
+    <div>
+      <div class="area-title" style="color:var(--a5)">项目质量管理 — 3个过程</div>
+      <div class="area-sub">规划1 · 执行1 · 监控1 · 预防优于检查</div>
+    </div>
+  </div>
+  <div class="area-desc"><strong>解决"做出来的东西达不达标"的问题。</strong>两个易混淆概念：<strong>质量（满足要求）≠ 等级（档次）</strong>。<strong>管理质量（QA）查过程</strong>→确保按规程做事；<strong>控制质量（QC）查产品</strong>→确保产品合格。流程：规划质量→控制质量（内部）→核实范围（客户验收）。</div>
+  <div class="proc-stack">
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a5b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">5.1 规划质量管理</span>
+        <span class="pc-desc">确定质量标准和指标</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 识别项目和产品的质量要求，制定<strong>质量管理计划</strong>和<strong>质量测量指标</strong>（如系统响应时间&lt;2秒、缺陷率&lt;0.1%）。常用工具：成本收益分析（质量投入值不值）、质量成本COQ（预防成本+评估成本&lt;&lt;内部失败+外部失败）。<br><strong>记忆钩：</strong>规划质量有流程图、矩阵图、思维导图等图形工具，比其他规划过程工具更多。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目章程</span><span class="ti">项目管理计划（需求/开发方法/范围/风险）</span><span class="ti">项目文件（假设日志/需求文件/风险/干系人登记册）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据收集（基准/头脑风暴/访谈）</span><span class="tt">数据分析（成本收益/质量成本COQ）</span><span class="tt">决策（多标准）</span><span class="tt">数据表现（流程图/逻辑数据模型/矩阵图/思维导图）</span><span class="tt">测试与检查规划</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">质量管理计划</span><span class="to">质量测量指标</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新（经验教训/风险/干系人登记册）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">规划质量管理</span>阶段，结合项目特点和合同要求，我制定了<span class="k">质量管理计划</span>，并设定了<span class="k">质量测量指标</span>，包括：<span class="b">系统响应时间≤2秒/核心功能缺陷率≤0.1%/用户满意度≥85分</span>等。采用<span class="k">成本收益分析</span>证明质量预防投入的合理性，为后续质量管理和控制提供量化标准。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a5b)">
+        <span class="pg-badge" style="background:var(--pg-exec);color:#fff">执行</span>
+        <span class="pc-name">5.2 管理质量</span>
+        <span class="pc-desc">审计过程合规性，推动质量改进</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 检查<strong>做事的过程</strong>是否符合质量管理计划（QA=质量保证）。工具：质量审计（有没有走流程）、根因分析（为什么出错）、PDCA循环（计划→执行→检查→改进）。<br><strong>记忆钩：</strong>管理质量查"人的行为"；控制质量查"产品的结果"。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（质量管理计划）</span><span class="ti">项目文件（质量控制测量结果/质量测量指标/经验教训/风险）</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">数据收集（核对单）</span><span class="tt">数据分析（备选/文件/过程/根因分析RCA）</span><span class="tt">决策（多标准）</span><span class="tt">数据表现（因果/鱼骨图/流程图/直方图/矩阵图/散点图）</span><span class="tt">审计</span><span class="tt">面向X的设计DfX</span><span class="tt">问题解决</span><span class="tt">质量改进方法（PDCA/六西格玛）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">质量报告（问题/建议/改进措施）</span><span class="to">测试与评估文件</span><span class="to">变更请求</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">管理质量</span>过程中，我定期组织<span class="k">质量审计</span>，检查团队是否按质量计划执行（如<span class="b">代码审查/单元测试覆盖率</span>是否达标）。针对审计发现的<span class="b">（接口文档更新不及时）</span>问题，运用<span class="k">根因分析（RCA）</span>找到根本原因，通过<span class="k">变更请求</span>完善流程，生成<span class="k">质量报告</span>向项目团队通报，持续推动过程改进。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a5b)">
+        <span class="pg-badge" style="background:var(--pg-monitor);color:#fff">监控</span>
+        <span class="pc-name">5.3 控制质量</span>
+        <span class="pc-desc">检验产品是否达到质量标准</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 对实际交付物进行测试和检查（QC=质量控制），确保产品符合质量测量指标。通过的才是"<strong>核实的可交付成果</strong>"，可提交给客户做验收。<br><strong>记忆钩：</strong>控制质量输出"核实的可交付成果"，正好对应核实范围的输入。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（质量管理计划）</span><span class="ti">项目文件（经验教训/质量测量指标/测试与评估文件）</span><span class="ti">批准的变更请求</span><span class="ti">可交付成果</span><span class="ti">工作绩效数据</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">数据收集（核对单/核查表/统计抽样/问卷调查）</span><span class="tt">数据分析（绩效审查/根因分析）</span><span class="tt">检查</span><span class="tt">测试/产品评估</span><span class="tt">数据表现（因果/控制图/直方图/散点图）</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">质量控制测量结果</span><span class="to">核实的可交付成果（→进入核实范围）</span><span class="to">工作绩效信息</span><span class="to">变更请求（缺陷修复）</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">控制质量</span>阶段，测试团队对每个模块进行<span class="k">测试与检查</span>，运用<span class="k">核查表</span>对照<span class="k">质量测量指标</span>逐项验证，采用<span class="k">统计抽样</span>对<span class="b">（数据处理模块）</span>进行抽查。共发现缺陷<span class="b">X</span>项，修复回归测试通过后，形成<span class="k">核实的可交付成果</span>，移交甲方进行<span class="k">确认范围</span>验收。</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ 06 资源管理 ═══════════════════════════════ -->
+<div class="area-wrap" id="a6">
+  <div class="area-hd">
+    <div class="area-num" style="background:var(--a6b);color:var(--a6)">06</div>
+    <div>
+      <div class="area-title" style="color:var(--a6)">项目资源管理 — 6个过程</div>
+      <div class="area-sub">规划2 · 执行3 · 监控1 · RACI图+团队建设</div>
+    </div>
+  </div>
+  <div class="area-desc"><strong>解决"用什么人和设备做项目"的问题。</strong>包括人力资源（团队）和实物资源（设备/材料）。团队管理重点：<strong>RACI责任矩阵</strong>（R=执行/A=负责/C=咨询/I=知情）；<strong>冲突解决5种方式</strong>（合作最佳/妥协/包容/撤退/强制）；<strong>塔克曼团队发展</strong>（形成→震荡→规范→执行→解散）。</div>
+  <div class="proc-stack">
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a6b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">6.1 规划资源管理</span>
+        <span class="pc-desc">确定如何获取、分配和管理资源</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 制定<strong>资源管理计划</strong>（含RACI图）和<strong>团队章程</strong>（规定团队工作规范和决策方式）。RACI图明确每个工作包"谁负责、谁执行、谁咨询、谁知情"，防止推诿。<br><strong>记忆钩：</strong>三种图形工具：层级图（OBS）、矩阵图（RACI）、文本型（角色说明）。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目章程</span><span class="ti">项目管理计划（质量/范围基准）</span><span class="ti">项目文件（进度/风险/干系人登记册）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据表现（层级型OBS/责任分配矩阵RACI/文本型）</span><span class="tt">组织理论</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">资源管理计划（含角色、职责、汇报关系、团队发展）</span><span class="to">团队章程（团队价值观/工作规范/决策机制）</span><span class="to">项目文件更新（假设日志）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">规划资源管理</span>阶段，我制定了<span class="k">资源管理计划</span>，明确团队组织结构。采用<span class="k">责任分配矩阵（RACI图）</span>，对每个WBS工作包的<span class="b">负责人（A）/执行人（R）/咨询人（C）/知情人（I）</span>进行明确，确保职责无死角。同时制定<span class="k">团队章程</span>，规定<span class="b">每日站会/代码审查/冲突升级</span>等工作规范。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a6b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">6.2 估算活动资源</span>
+        <span class="pc-desc">确定每个活动需要多少什么类型的资源</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 估算完成每个活动所需的人力、材料、设备类型和数量，产出<strong>资源需求</strong>和<strong>资源分解结构（RBS）</strong>。RBS是按类型分解的资源层级结构，类似WBS但针对资源。<br><strong>记忆钩：</strong>资源估算的输出比进度估算多一个"资源分解结构RBS"。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（资源管理计划/范围基准）</span><span class="ti">项目文件（活动清单/活动属性/假设日志/成本估算/资源日历/风险）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">自下而上估算</span><span class="tt">类比估算</span><span class="tt">参数估算</span><span class="tt">数据分析（备选方案分析）</span><span class="tt">PMIS</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">资源需求（每个活动所需资源类型和数量）</span><span class="to">估算依据</span><span class="to">资源分解结构RBS</span><span class="to">项目文件更新（活动属性/假设日志/经验教训）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">我运用<span class="k">自下而上估算</span>方法，对每个活动所需的<span class="b">（前端/后端/测试/DBA）</span>等人力资源及<span class="b">（服务器/软件授权）</span>等实物资源进行估算，形成<span class="k">资源需求</span>文件，并整理出按类型分层的<span class="k">资源分解结构（RBS）</span>，为后续获取资源和制定进度计划提供基础。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a6b)">
+        <span class="pg-badge" style="background:var(--pg-exec);color:#fff">执行</span>
+        <span class="pc-name">6.3 获取资源</span>
+        <span class="pc-desc">招募/分配所需的人员和实物资源</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 通过内部分配或外部招募，获取完成项目所需的团队成员和实物资源，更新资源日历（记录资源可用性）。<strong>预分派</strong>是指在项目开始前就确定好特定人员；<strong>虚拟团队</strong>是地理上分散的团队。<br><strong>记忆钩：</strong>输出：实物资源分配单+项目团队派工单+资源日历（三个）。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（资源管理计划/采购管理计划/成本基准）</span><span class="ti">项目文件（进度/资源日历/资源需求/干系人登记册）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">决策（多标准分析）</span><span class="tt">人际关系与团队技能（谈判）</span><span class="tt">预分派</span><span class="tt">虚拟团队</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">实物资源分配单</span><span class="to">项目团队派工单</span><span class="to">资源日历（记录可用性）</span><span class="to">变更请求</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新</span><span class="to">事业环境因素更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">获取资源</span>阶段，我通过<span class="k">谈判</span>与职能部门协商，获得了<span class="b">X名</span>开发工程师、<span class="b">X名</span>测试工程师的支持，完成<span class="k">项目团队派工单</span>；同时采购了<span class="b">（XX服务器/XX软件授权）</span>等实物资源，记录于<span class="k">实物资源分配单</span>，并更新<span class="k">资源日历</span>反映各资源的可用时段。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a6b)">
+        <span class="pg-badge" style="background:var(--pg-exec);color:#fff">执行</span>
+        <span class="pc-name">6.4 建设团队</span>
+        <span class="pc-desc">提升团队能力、凝聚力和协作效率</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 通过培训、团建、认可激励等手段提升团队绩效。<strong>塔克曼团队发展阶段</strong>：形成（组建）→震荡（冲突）→规范（磨合）→执行（高效）→解散。项目经理要帮助团队快速度过震荡期。<br><strong>记忆钩：</strong>建设团队输出"团队绩效评价"；集中办公（战情室）=提高效率的物理手段。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（资源管理计划）</span><span class="ti">项目文件（经验教训/进度/团队章程/资源日历/派工单）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">集中办公（战情室）</span><span class="tt">虚拟团队</span><span class="tt">沟通技术</span><span class="tt">人际关系与团队技能（冲突管理/影响/激励/谈判/团队建设）</span><span class="tt">认可与奖励</span><span class="tt">培训</span><span class="tt">个人和团队评估（MBTI/DISC）</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">团队绩效评价（技能提升/士气/凝聚力/离职率）</span><span class="to">变更请求</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新</span><span class="to">事业环境因素更新（人员绩效/培训记录）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">针对团队成员来自多部门、协作磨合困难的情况，我在<span class="k">建设团队</span>阶段采取：①组织<span class="k">技术培训</span>（<span class="b">XX框架/项目管理方法</span>）提升技能；②实施<span class="k">认可与奖励</span>机制，对完成里程碑的成员公开表彰；③通过<span class="k">冲突管理</span>（采用<span class="k">合作</span>方式）化解<span class="b">（前后端接口分歧）</span>，推动团队从震荡期进入执行期，<span class="k">团队绩效评价</span>显著提升。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a6b)">
+        <span class="pg-badge" style="background:var(--pg-exec);color:#fff">执行</span>
+        <span class="pc-name">6.5 管理团队</span>
+        <span class="pc-desc">跟踪绩效，处理问题，优化团队</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 跟踪团队成员绩效，提供反馈，解决问题，管理团队变更。重点处理低绩效成员和团队冲突。注意：<strong>建设团队</strong>偏向"能力提升"，<strong>管理团队</strong>偏向"绩效跟踪和问题处理"。<br><strong>记忆钩：</strong>管理团队的输入多了"工作绩效报告"和"团队绩效评价"（建设团队的输出）。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（资源管理计划）</span><span class="ti">项目文件（问题日志/经验教训/团队章程/项目团队派工单/绩效评价）</span><span class="ti">工作绩效报告</span><span class="ti">团队绩效评价</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">人际关系与团队技能（冲突管理/制定决策/情商EQ/影响/领导力）</span><span class="tt">PMIS</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">变更请求（人员替换/角色调整）</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新（问题日志/经验教训/派工单）</span><span class="to">事业环境因素更新（员工绩效评价）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">管理团队</span>过程中，我定期对成员绩效进行评估，运用<span class="k">情商（EQ）</span>技能和<span class="k">领导力</span>，为表现欠佳的成员提供反馈和辅导。发现<span class="b">（某成员因技术能力不足影响进度）</span>后，经评估决定提出<span class="k">变更请求</span>进行<span class="b">人员替换</span>，并在问题日志中记录处理过程，确保团队整体绩效不受影响。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a6b)">
+        <span class="pg-badge" style="background:var(--pg-monitor);color:#fff">监控</span>
+        <span class="pc-name">6.6 控制资源</span>
+        <span class="pc-desc">确保实物资源按计划可用，处理偏差</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 监控项目实物资源（设备、材料）的使用情况，与计划对比，发现短缺或浪费时采取纠偏。注意：<strong>控制资源管实物资源</strong>；<strong>管理团队管人力资源</strong>。<br><strong>记忆钩：</strong>控制资源≠管理团队；控制资源关注设备/材料的消耗和可用性。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（资源管理计划）</span><span class="ti">项目文件（问题日志/经验教训/实物资源分配单/项目进度/资源分解结构/资源需求/风险）</span><span class="ti">工作绩效数据</span><span class="ti">协议</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">数据分析（备选/成本收益/绩效审查/趋势分析）</span><span class="tt">问题解决</span><span class="tt">人际关系与团队技能（谈判/影响）</span><span class="tt">PMIS</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">工作绩效信息（资源利用率偏差）</span><span class="to">变更请求</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">控制资源</span>过程中，我定期对照<span class="k">实物资源分配单</span>监控<span class="b">（测试服务器/开发环境）</span>等实物资源的使用情况，发现<span class="b">（XX设备利用率不足30%）</span>时，运用<span class="k">绩效审查</span>分析原因并通过<span class="k">资源优化</span>重新分配，避免资源浪费，确保资源按计划有效支撑项目执行。</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ 07 沟通管理 ═══════════════════════════════ -->
+<div class="area-wrap" id="a7">
+  <div class="area-hd">
+    <div class="area-num" style="background:var(--a7b);color:var(--a7)">07</div>
+    <div>
+      <div class="area-title" style="color:var(--a7)">项目沟通管理 — 3个过程</div>
+      <div class="area-sub">规划1 · 执行1 · 监控1 · 沟通渠道=n(n-1)/2</div>
+    </div>
+  </div>
+  <div class="area-desc"><strong>解决"信息怎么传、传给谁"的问题。</strong>三种沟通方式：<strong>交互式</strong>（双向实时，如会议/电话）、<strong>推式</strong>（单向发出，如邮件/报告，不保证理解）、<strong>拉式</strong>（放共享区被动获取，如知识库）。沟通渠道数量公式：<strong>n(n-1)/2</strong>，是论文中常用的"数字亮点"。</div>
+  <div class="proc-stack">
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a7b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">7.1 规划沟通管理</span>
+        <span class="pc-desc">制定谁需要什么信息、怎么传递的方案</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 通过<strong>沟通需求分析</strong>，明确各干系人的信息需求，制定沟通管理计划（沟通矩阵）：什么信息、谁来发、发给谁、用什么方式、多久一次。<br><strong>记忆钩：</strong>规划沟通的核心工具=沟通需求分析（分析信息量=渠道数×内容）。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目章程</span><span class="ti">项目管理计划（资源/干系人参与计划）</span><span class="ti">项目文件（需求文件/干系人登记册）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">沟通需求分析</span><span class="tt">沟通技术（选择适合的方式）</span><span class="tt">沟通模型（发送→编码→传递→解码→接收→反馈→噪声）</span><span class="tt">沟通方法（交互式/推式/拉式）</span><span class="tt">人际关系与团队技能</span><span class="tt">数据表现</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">沟通管理计划（沟通矩阵：信息/发送方/接收方/方式/频率）</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新（干系人登记册）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">项目团队共<span class="b">X</span>人，沟通渠道数=<span class="k">n(n-1)/2=X(X-1)/2=X条</span>，沟通复杂度较高。我通过<span class="k">沟通需求分析</span>制定<span class="k">沟通管理计划</span>：对高层采用<span class="k">交互式沟通</span>（月度例会）；对团队成员采用<span class="k">推式沟通</span>（周报邮件）；对外部相关方采用<span class="k">拉式沟通</span>（共享文档平台），确保信息及时准确传递。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a7b)">
+        <span class="pg-badge" style="background:var(--pg-exec);color:#fff">执行</span>
+        <span class="pc-name">7.2 管理沟通</span>
+        <span class="pc-desc">按计划创建、分发和存储项目信息</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 按照沟通管理计划，及时、准确地收集和分发项目信息，包括状态报告、进展更新、绩效数据等。产出<strong>项目沟通记录</strong>（邮件/会议纪要/报告存档）。<br><strong>记忆钩：</strong>管理沟通的输出=项目沟通记录（实际发出去的信息的存档）。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（资源/沟通/干系人参与计划）</span><span class="ti">项目文件（变更日志/问题日志/经验教训/质量报告/风险/干系人登记册）</span><span class="ti">工作绩效报告</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">沟通技术</span><span class="tt">沟通方法</span><span class="tt">沟通技能（主动倾听/反馈/演示/谈判/演讲/书写）</span><span class="tt">PMIS</span><span class="tt">项目报告（状态报告/进展报告/趋势报告）</span><span class="tt">人际关系与团队技能（文化意识/会议管理/政治意识）</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">项目沟通记录（邮件/会议纪要/报告存档）</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新（问题日志/经验教训/进度/风险/干系人）</span><span class="to">组织过程资产更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">管理沟通</span>过程中，我按照沟通计划定期向甲方发送<span class="k">项目状态报告</span>，组织每周团队例会并形成<span class="k">会议纪要</span>，所有沟通记录归档于<span class="k">PMIS</span>系统，形成完整的<span class="k">项目沟通记录</span>。借助<span class="b">（企业微信/钉钉/Confluence）</span>平台实现信息及时推送，确保相关方信息对称。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a7b)">
+        <span class="pg-badge" style="background:var(--pg-monitor);color:#fff">监控</span>
+        <span class="pc-name">7.3 监督沟通</span>
+        <span class="pc-desc">确保沟通计划满足干系人信息需求</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 监控沟通活动是否有效，干系人是否收到并理解了所需信息。发现沟通不畅时（如某干系人反映信息滞后），调整沟通方式或频率。<br><strong>记忆钩：</strong>监督沟通关注的是沟通的"效果"而非"行为"；发现问题→变更请求更新沟通计划。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（资源/沟通/干系人参与计划）</span><span class="ti">项目文件（问题日志/经验教训/项目沟通记录）</span><span class="ti">工作绩效数据</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">PMIS</span><span class="tt">数据表现</span><span class="tt">人际关系与团队技能（观察/对话）</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">工作绩效信息（沟通效果评估）</span><span class="to">变更请求（调整沟通计划）</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">监督沟通</span>过程中，我通过<span class="k">观察与对话</span>了解各干系人对信息的接收效果，发现<span class="b">（某业务部门负责人反映技术术语过多、难以理解进度报告）</span>，提出<span class="k">变更请求</span>调整了<span class="k">沟通管理计划</span>，改用<span class="b">图表+通俗说明</span>的形式进行汇报，沟通效果明显改善。</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ 08 风险管理 ═══════════════════════════════ -->
+<div class="area-wrap" id="a8">
+  <div class="area-hd">
+    <div class="area-num" style="background:var(--a8b);color:var(--a8)">08</div>
+    <div>
+      <div class="area-title" style="color:var(--a8)">项目风险管理 — 7个过程</div>
+      <div class="area-sub">规划5 · 执行1 · 监控1 · 风险登记册贯穿始终</div>
+    </div>
+  </div>
+  <div class="area-desc"><strong>解决"什么可能出错/出好，怎么提前应对"的问题。</strong>风险 = 威胁（负面）+ 机会（正面）。<strong>威胁应对：回避/转移/减轻/接受/升级</strong>；<strong>机会应对：开拓/分享/提高/接受/升级</strong>。定性分析（P×I矩阵）必做；定量分析（蒙特卡罗）可选。<strong>风险登记册</strong>是核心文件，贯穿所有风险过程。</div>
+  <div class="proc-stack">
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a8b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">8.1 规划风险管理</span>
+        <span class="pc-desc">制定如何开展风险管理活动的方法</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 制定<strong>风险管理计划</strong>，规定：风险管理的方法论、风险的概率和影响定义标准（如影响"高"=工期延误&gt;2周）、风险阈值、风险分类方式（RBS）等。是风险管理的"元计划"。<br><strong>记忆钩：</strong>输出只有一个=风险管理计划（定义了风险管理的规则）。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目章程</span><span class="ti">项目管理计划（所有子计划）</span><span class="ti">项目文件（干系人登记册）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据分析（干系人分析）</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">风险管理计划（方法/角色/预算/时间/风险类别/概率影响定义/报告格式）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">我制定了<span class="k">风险管理计划</span>，明确了风险概率和影响的评级标准（<span class="b">影响"高"=工期延误&gt;2周或成本超支&gt;10%</span>），规定了<span class="k">风险登记册</span>的维护责任人（项目经理）和更新频率（<span class="b">每两周一次</span>），确保风险管理工作规范有序开展。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a8b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">8.2 识别风险</span>
+        <span class="pc-desc">列出所有可能影响项目的风险事件</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 识别所有可能对项目目标产生影响的风险（威胁+机会），建立<strong>风险登记册</strong>。常用工具：头脑风暴（快速发散）、SWOT分析（全面识别内外部）、核对单（参考历史项目）、提示清单（PESTLE/TECOP框架）。<br><strong>记忆钩：</strong>识别风险输出两个：风险登记册+风险报告（整体风险评估）。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（所有子计划）</span><span class="ti">项目文件（假设日志/成本/进度/质量/需求/风险/干系人）</span><span class="ti">采购文件</span><span class="ti">协议</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据收集（头脑风暴/核对单/访谈）</span><span class="tt">数据分析（根因/假设与制约/SWOT/文件）</span><span class="tt">人际关系与团队技能（引导）</span><span class="tt">提示清单（PESTLE/TECOP）</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">风险登记册（描述/触发条件/风险责任人）</span><span class="to">风险报告（整体项目风险敞口）</span><span class="to">项目文件更新（假设日志）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">识别风险</span>阶段，我组织团队、专家及甲方代表通过<span class="k">头脑风暴</span>和<span class="k">SWOT分析</span>，共识别风险<span class="b">X</span>项，包括技术风险<span class="b">X</span>项、进度风险<span class="b">X</span>项、外部风险<span class="b">X</span>项，全部记录于<span class="k">风险登记册</span>，同时形成<span class="k">风险报告</span>描述整体风险状况，作为后续定性分析的输入。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a8b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">8.3 实施定性风险分析</span>
+        <span class="pc-desc">用概率×影响矩阵确定风险优先级</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 对识别出的风险用<strong>概率与影响矩阵（P×I）</strong>进行主观评分，确定高/中/低优先级，决定哪些风险需要重点关注。这是<strong>必做步骤</strong>（定量分析是可选的）。<br><strong>记忆钩：</strong>定性=主观评分排优先级（快速）；定量=数值模拟（精确但复杂）。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（风险管理计划）</span><span class="ti">项目文件（假设日志/风险登记册/干系人登记册）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据收集（访谈）</span><span class="tt">数据分析（风险概率与影响评估/概率影响矩阵PI/风险数据质量评估/风险分类/紧迫性评估/层级图）</span><span class="tt">人际关系与团队技能（引导）</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">项目文件更新（风险登记册：增加优先级/紧迫性/分类/可观察性）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">我对<span class="b">X</span>项风险运用<span class="k">概率与影响矩阵</span>进行<span class="k">定性风险分析</span>，评定<strong>高优先级</strong>风险<span class="b">X</span>项（如<span class="b">核心技术未经验证/关键人员离职</span>），<strong>中优先级</strong><span class="b">X</span>项，<strong>低优先级</strong><span class="b">X</span>项（列入观察清单），按优先级更新<span class="k">风险登记册</span>，高优先级风险进入应对规划。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a8b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">8.4 实施定量风险分析</span>
+        <span class="pc-desc">用数值模型量化风险对目标的综合影响</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 对高优先级风险进行数值化分析，常用<strong>蒙特卡罗模拟</strong>（随机模拟千次以上，得出完工日期/成本的概率分布）和<strong>决策树分析</strong>（计算各决策路径的期望值）。<strong>本过程是可选的</strong>（资金充足的大型项目才做）。<br><strong>记忆钩：</strong>定量=蒙特卡罗/决策树/灵敏度/影响图；输出只更新风险报告。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（风险管理计划/范围基准/进度基准/成本基准）</span><span class="ti">项目文件（假设日志/估算依据/成本估算/成本预测/持续时间估算/里程碑/资源需求/进度预测/风险登记册/风险报告）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据收集（访谈）</span><span class="tt">人际关系与团队技能（引导）</span><span class="tt">不确定性表现方式（概率分布/概率分支）</span><span class="tt">数据分析（模拟蒙特卡罗/灵敏度分析龙卷风图/决策树/影响图）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">项目文件更新（风险报告：更新概率分布/置信水平）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">针对<span class="b">X</span>项高优先级风险，我运用<span class="k">蒙特卡罗模拟</span>进行<span class="k">定量风险分析</span>，模拟<span class="b">10000</span>次项目完成情景，结果显示：项目有<span class="b">90%</span>置信度在<span class="b">X天内</span>完成，有<span class="b">80%</span>可能性成本不超过<span class="b">XXX万元</span>，为储备金设定和进度预警提供了数据支撑，并将结果更新至<span class="k">风险报告</span>。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a8b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">8.5 规划风险应对</span>
+        <span class="pc-desc">为高优先级风险制定具体应对策略</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 制定具体的应对策略，减少威胁/增强机会。应对策略是<strong>最高频考点</strong>：<br>
+        <strong>威胁：</strong>回避（消除风险）/转移（转给第三方）/减轻（降低概率或影响）/接受（主动留储备/被动啥不做）/升级（超出权限上报）<br>
+        <strong>机会：</strong>开拓（确保实现）/分享（与他人共享）/提高（增加概率/影响）/接受/升级<br><strong>记忆钩：</strong>威胁四字：回转减接；机会四字：开分提接；两者都有升级。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（资源/风险管理计划/成本基准）</span><span class="ti">项目文件（经验教训/进度/资源日历/风险登记册/风险报告/干系人登记册）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据收集（访谈）</span><span class="tt">人际关系与团队技能（引导）</span><span class="tt">威胁应对（回避/转移/减轻/接受/升级）</span><span class="tt">机会应对（开拓/分享/提高/接受/升级）</span><span class="tt">应急应对策略（触发条件+备用计划）</span><span class="tt">整体项目风险应对策略</span><span class="tt">决策（多标准）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">变更请求（预防/纠正措施）</span><span class="to">项目管理计划更新（成本/进度/质量/资源计划）</span><span class="to">项目文件更新（风险登记册/风险报告：增加应对措施/责任人/触发条件/应急计划）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">针对高优先级风险，我制定了<span class="k">风险应对策略</span>：<br>①<span class="b">（关键技术风险）</span>→<span class="k">减轻</span>：提前<span class="b">X周</span>进行技术预研，降低发生概率；<br>②<span class="b">（第三方接口不稳定）</span>→<span class="k">转移</span>：合同约定接口联调风险由供应商承担；<br>③<span class="b">（需求变更风险）</span>→<span class="k">接受（主动）</span>：在成本基准中预留<span class="b">X%</span><span class="k">应急储备</span>。<br>所有策略、触发条件和责任人更新至<span class="k">风险登记册</span>。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a8b)">
+        <span class="pg-badge" style="background:var(--pg-exec);color:#fff">执行</span>
+        <span class="pc-name">8.6 实施风险应对</span>
+        <span class="pc-desc">执行已批准的风险应对措施</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 确保已批准的风险应对计划被实际执行，而不只是停留在文件里。项目经理要跟踪应对措施的落实情况，确保风险责任人真正行动起来。<br><strong>记忆钩：</strong>实施风险应对是PMBOK第6版新增过程；输入=风险登记册（应对计划）；工具主要用PMIS跟踪。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（风险管理计划）</span><span class="ti">项目文件（经验教训/风险登记册/风险报告）</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">人际关系与团队技能（影响力）</span><span class="tt">PMIS</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">变更请求（实施应对后引发的变更）</span><span class="to">项目文件更新（问题日志/经验教训/派工单/风险登记册/风险报告）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">实施风险应对</span>阶段，我跟踪确认各风险应对措施的落实情况：对<span class="b">（技术预研任务）</span>通过<span class="k">PMIS</span>追踪完成进度；对<span class="b">（供应商合同条款）</span>确认签署到位。将所有应对措施的执行结果更新至<span class="k">风险登记册</span>，确保风险应对从"计划"落实到"行动"。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a8b)">
+        <span class="pg-badge" style="background:var(--pg-monitor);color:#fff">监控</span>
+        <span class="pc-name">8.7 监督风险</span>
+        <span class="pc-desc">跟踪已识别风险，识别新风险，评估应对效果</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 整个项目过程中持续监控风险：跟踪已有风险状态、识别新出现的风险、评估应对措施是否有效、核实储备是否充足。<br><strong>记忆钩：</strong>监督风险的工具特色=审计（评估应对措施有效性）和技术绩效分析（与规划值对比发现技术风险）。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（风险管理计划）</span><span class="ti">项目文件（问题日志/经验教训/风险登记册/风险报告）</span><span class="ti">工作绩效数据</span><span class="ti">工作绩效报告</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">数据分析（技术绩效分析/储备分析）</span><span class="tt">审计（评估应对措施有效性）</span><span class="tt">会议（风险审查会议）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">工作绩效信息（风险状态/应对有效性）</span><span class="to">变更请求（新风险/应对调整）</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新（假设日志/问题日志/经验教训/风险登记册/风险报告）</span><span class="to">组织过程资产更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">监督风险</span>过程中，我每两周召开一次<span class="k">风险审查会议</span>，通过<span class="k">审计</span>评估各应对措施执行效果，运用<span class="k">储备分析</span>检查应急储备使用情况。期间新识别风险<span class="b">X</span>项（如<span class="b">疫情影响人员到场</span>），及时更新<span class="k">风险登记册</span>并制定应对策略，确保风险管理持续有效。</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ 09 采购管理 ═══════════════════════════════ -->
+<div class="area-wrap" id="a9">
+  <div class="area-hd">
+    <div class="area-num" style="background:var(--a9b);color:var(--a9)">09</div>
+    <div>
+      <div class="area-title" style="color:var(--a9)">项目采购管理 — 3个过程</div>
+      <div class="area-sub">规划1 · 执行1 · 监控1 · 合同类型是考试重点</div>
+    </div>
+  </div>
+  <div class="area-desc"><strong>解决"哪些东西需要外部采购/外包"的问题。</strong>合同类型是高频考点：<strong>固定总价FFP</strong>（风险在卖方，买方最安全，适合需求明确）；<strong>成本补偿CR</strong>（风险在买方，适合需求不明确）；<strong>时间与材料T&M</strong>（风险共担，适合外包劳务）。自制/外购分析是规划采购的核心决策工具。</div>
+  <div class="proc-stack">
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a9b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">9.1 规划采购管理</span>
+        <span class="pc-desc">决定买什么、怎么买、用什么合同</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 通过<strong>自制/外购分析</strong>确定哪些工作需要外包；编制<strong>采购工作说明书（SOW）</strong>明确卖方需要交付什么；准备招标文件（RFP征求建议书/IFB邀请投标/RFQ询价）；制定供方选择标准。<br><strong>记忆钩：</strong>输出最多（7个），含SOW、采购文件、供方选择标准、自制/外购决策等。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目章程</span><span class="ti">项目管理计划（范围/质量/资源/风险管理计划/范围基准）</span><span class="ti">项目文件（里程碑/需求文件/风险/干系人登记册）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据收集（市场调研）</span><span class="tt">数据分析（自制/外购分析）</span><span class="tt">供方选择分析</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">采购管理计划</span><span class="to">采购策略（合同类型：FFP/CR/T&M）</span><span class="to">采购工作说明书SOW</span><span class="to">采购文件（RFP/IFB/RFQ）</span><span class="to">供方选择标准</span><span class="to">自制或外购决策</span><span class="to">变更请求</span><span class="to">项目管理计划更新</span><span class="to">组织过程资产更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">规划采购管理</span>阶段，通过<span class="k">自制/外购分析</span>，决定将<span class="b">（XX子系统/硬件采购/运维服务）</span>进行外包。编制了<span class="k">采购工作说明书（SOW）</span>，明确供应商交付内容和验收标准。根据<span class="b">（需求明确、风险由卖方承担）</span>的特点，采用<span class="k">固定总价合同（FFP）</span>，编制了<span class="k">采购文件（RFP）</span>，制定了<span class="k">供方选择标准</span>，通过竞争性招标选择供应商。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a9b)">
+        <span class="pg-badge" style="background:var(--pg-exec);color:#fff">执行</span>
+        <span class="pc-name">9.2 实施采购</span>
+        <span class="pc-desc">从供方获取建议书，选定卖方并签合同</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 向潜在供应商发出采购文件，收取并评估建议书/投标书，通过谈判选定最优供应商，签署<strong>合同（协议）</strong>。投标人会议（也叫卖方会议/承包商会议）是重要工具，用于统一解答投标方疑问确保公平竞争。<br><strong>记忆钩：</strong>实施采购=招标+评标+谈判+签合同；输出核心=选定的卖方+协议（合同）。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（范围/需求/沟通/风险/采购管理计划/配置管理计划/成本基准）</span><span class="ti">项目文件（经验教训/里程碑/风险/干系人登记册）</span><span class="ti">采购文件</span><span class="ti">供方选择标准</span><span class="ti">卖方建议书</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">广告</span><span class="tt">投标人会议（承包商会议）</span><span class="tt">数据分析（建议书评估）</span><span class="tt">人际关系与团队技能（谈判）</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">选定的卖方</span><span class="to">协议（合同）</span><span class="to">变更请求</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新（经验教训/需求文件/风险/干系人）</span><span class="to">组织过程资产更新</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">实施采购</span>阶段，我组织了<span class="k">投标人会议</span>，统一解答供应商疑问。通过<span class="k">建议书评估</span>，按照<span class="k">供方选择标准</span>（技术方案<span class="b">40%</span>+价格<span class="b">30%</span>+业绩<span class="b">30%</span>）综合评分，选定<span class="b">XX公司</span>为中标供应商，经双方<span class="k">谈判</span>后签署了<span class="k">固定总价合同（FFP）</span>，明确了交付范围、验收条件和违约责任。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a9b)">
+        <span class="pg-badge" style="background:var(--pg-monitor);color:#fff">监控</span>
+        <span class="pc-name">9.3 控制采购</span>
+        <span class="pc-desc">管理合同履行，处理索赔，关闭采购</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 监督供应商的合同执行情况，确保双方履约。处理合同变更、索赔和争议。合同完成后正式关闭采购。<strong>索赔管理</strong>（处理争议的正式流程）是控制采购特有工具。<br><strong>记忆钩：</strong>控制采购的特色输出=结束的采购（合同关闭）和采购文件更新。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（需求/沟通/风险/采购管理计划）</span><span class="ti">项目文件（假设日志/经验教训/里程碑/质量/风险）</span><span class="ti">协议（合同）</span><span class="ti">采购文件</span><span class="ti">批准的变更请求</span><span class="ti">工作绩效数据</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">索赔管理（争议解决/替代争议解决方式）</span><span class="tt">数据分析（绩效审查/挣值/趋势分析）</span><span class="tt">检查</span><span class="tt">审计</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">结束的采购（合同正式关闭）</span><span class="to">工作绩效信息（供应商绩效）</span><span class="to">采购文件更新</span><span class="to">变更请求</span><span class="to">项目管理计划更新</span><span class="to">项目文件更新</span><span class="to">组织过程资产更新（供应商评价记录）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">控制采购</span>过程中，我定期通过<span class="k">绩效审查</span>和<span class="k">检查</span>监督<span class="b">XX供应商</span>的合同履约情况，对比合同约定验收标准，发现<span class="b">（交付物存在X项缺陷）</span>后要求供应商限期整改。项目收尾时，经双方确认所有交付物合格，正式签署了<span class="k">结束的采购</span>文件，完成合同关闭，并将供应商绩效评价更新至<span class="k">组织过程资产</span>。</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ 10 干系人管理 ═══════════════════════════════ -->
+<div class="area-wrap" id="a10">
+  <div class="area-hd">
+    <div class="area-num" style="background:var(--a10b);color:var(--a10)">10</div>
+    <div>
+      <div class="area-title" style="color:var(--a10)">项目干系人管理 — 4个过程</div>
+      <div class="area-sub">启动1 · 规划1 · 执行1 · 监控1 · 参与度矩阵是核心</div>
+    </div>
+  </div>
+  <div class="area-desc"><strong>解决"谁会影响或被影响这个项目，怎么让他们支持"的问题。</strong><strong>权力/利益方格</strong>：高权力高利益→重点管理；高权力低利益→令其满意；低权力高利益→随时告知；低权力低利益→监督即可。<strong>干系人参与度矩阵5级</strong>：不知晓→抵制→中立→支持→领导（C=当前/D=期望，推动C向D靠拢）。</div>
+  <div class="proc-stack">
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a10b)">
+        <span class="pg-badge" style="background:var(--pg-start);color:#fff">启动</span>
+        <span class="pc-name">10.1 识别干系人</span>
+        <span class="pc-desc">识别所有相关方，建立干系人登记册</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 在项目启动时（也需持续进行）识别所有可能影响项目或被项目影响的人/组织，分析他们的权力、利益、影响力，建立<strong>干系人登记册</strong>。识别越早、越全面，后续管理越主动。<br><strong>记忆钩：</strong>干系人登记册是"识别干系人"的核心输出，后续所有干系人过程都要用到它。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目章程</span><span class="ti">项目管理计划（沟通/干系人参与计划）</span><span class="ti">项目文件（变更日志/问题日志/需求文件）</span><span class="ti">协议</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据收集（问卷调查/头脑风暴）</span><span class="tt">数据分析（干系人分析/文件分析）</span><span class="tt">数据表现（权力利益方格/权力影响方格/影响方向/优先级/凸显模型）</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">干系人登记册（基本信息/评估/分类/参与度）</span><span class="to">变更请求</span><span class="to">项目管理计划更新（沟通/干系人参与计划）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在项目<span class="k">启动阶段</span>，通过<span class="k">干系人分析</span>识别干系人共<span class="b">X</span>类，包括<span class="b">（甲方业务部门/IT部门/最终用户/监管机构/外部供应商）</span>等，建立<span class="k">干系人登记册</span>。运用<span class="k">权力/利益方格</span>将<span class="b">（甲方项目负责人）</span>归入"重点管理"象限，将<span class="b">（最终用户）</span>归入"随时告知"象限，为制定差异化参与策略提供依据。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a10b)">
+        <span class="pg-badge" style="background:var(--pg-plan);color:#fff">规划</span>
+        <span class="pc-name">10.2 规划干系人参与</span>
+        <span class="pc-desc">制定提升干系人参与度的策略</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 针对各干系人制定<strong>干系人参与计划</strong>，核心工具是<strong>干系人参与度矩阵</strong>，标注每个干系人的C（当前参与度）和D（期望参与度），差距就是需要采取行动的地方。<br><strong>记忆钩：</strong>参与度5级：不知晓(U)/抵制(R)/中立(N)/支持(S)/领导(L)；C到D的距离=管理工作量。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目章程</span><span class="ti">项目管理计划（沟通/风险/资源/变更管理计划）</span><span class="ti">项目文件（假设日志/变更日志/问题日志/进度/风险/干系人登记册）</span><span class="ti">协议</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">数据收集（基准/头脑风暴/访谈）</span><span class="tt">数据分析（假设/根因/干系人分析）</span><span class="tt">决策（优先级/投票）</span><span class="tt">数据表现（思维导图/干系人参与度矩阵）</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">干系人参与计划（针对各干系人的参与策略和行动计划）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">规划干系人参与</span>阶段，我运用<span class="k">干系人参与度矩阵</span>标注各方的当前参与度（C）和期望参与度（D）：<span class="b">（业务部门负责人）</span>当前为"抵制"，期望为"支持"，制定了<span class="k">干系人参与计划</span>，确定通过<span class="b">专项沟通和需求演示</span>化解其顾虑；<span class="b">（最终用户）</span>当前"不知晓"，期望"支持"，计划通过<span class="b">用户培训和试用体验</span>提升参与度。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a10b)">
+        <span class="pg-badge" style="background:var(--pg-exec);color:#fff">执行</span>
+        <span class="pc-name">10.3 管理干系人参与</span>
+        <span class="pc-desc">主动沟通，处理关切，提升支持度</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 主动与干系人沟通，管理其期望，解决其关切，处理问题，提升其参与度。重点处理"抵制"型干系人——找出反对根本原因，通过谈判和沟通争取支持。<br><strong>记忆钩：</strong>管理干系人的目标是推动C→D（使参与度向期望状态靠拢）。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（沟通/风险/干系人参与计划）</span><span class="ti">项目文件（变更日志/问题日志/经验教训/干系人登记册）</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">专家判断</span><span class="tt">沟通技能（反馈/演示/演讲）</span><span class="tt">人际关系与团队技能（冲突管理/文化意识/谈判/观察/政治意识）</span><span class="tt">基本规则</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">变更请求（干系人需求变化引发）</span><span class="to">项目管理计划更新（沟通/干系人参与计划）</span><span class="to">项目文件更新（变更日志/问题日志/经验教训/干系人登记册）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">管理干系人参与</span>过程中，我发现<span class="b">（业务部门负责人）</span>对项目持抵制态度，主动约谈，通过<span class="k">谈判</span>了解其顾虑源于<span class="b">（系统上线影响业务流程）</span>，针对性制定了<span class="b">（分阶段上线+专项培训）</span>方案，最终将其参与度从"抵制"提升至"支持"，并更新<span class="k">干系人登记册</span>记录参与度变化。</div></div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-hd" style="background:var(--a10b)">
+        <span class="pg-badge" style="background:var(--pg-monitor);color:#fff">监控</span>
+        <span class="pc-name">10.4 监督干系人参与</span>
+        <span class="pc-desc">持续跟踪参与度，调整策略</span>
+      </div>
+      <div class="pc-body">
+        <div class="wi"><strong>【干什么】</strong> 持续监控干系人参与度是否达到期望水平（C是否趋向D），评估参与策略是否有效，发现新的干系人需求或态度变化，及时调整沟通和参与策略。<br><strong>记忆钩：</strong>监督干系人=周期性更新干系人参与度矩阵（重新标注C值，检查距D的差距）。</div>
+        <div class="itto-wrap">
+          <div class="itto-row"><div class="il">输入</div><div class="tags"><span class="ti">项目管理计划（资源/沟通/风险/干系人参与计划）</span><span class="ti">项目文件（问题日志/经验教训/项目沟通记录/风险/干系人登记册）</span><span class="ti">工作绩效数据</span><span class="ti">事业环境因素</span><span class="ti">组织过程资产</span></div></div>
+          <div class="itto-row"><div class="il">工具与技术</div><div class="tags"><span class="tt">数据分析（备选/根因/干系人分析）</span><span class="tt">决策（多标准/投票）</span><span class="tt">数据表现（干系人参与度矩阵）</span><span class="tt">沟通技能（反馈）</span><span class="tt">人际关系与团队技能（主动倾听/文化意识/领导力/政治意识）</span><span class="tt">会议</span></div></div>
+          <div class="itto-row"><div class="il">输出</div><div class="tags"><span class="to">工作绩效信息（干系人参与度趋势）</span><span class="to">变更请求（调整参与策略）</span><span class="to">项目管理计划更新（沟通/干系人参与计划）</span><span class="to">项目文件更新（问题日志/经验教训/风险/干系人登记册）</span></div></div>
+        </div>
+        <div class="pb"><div class="pb-label">论文套用句式</div><div class="pe">在<span class="k">监督干系人参与</span>过程中，我每月更新<span class="k">干系人参与度矩阵</span>，重新评估各方参与度（C值）是否向期望（D值）靠拢。发现<span class="b">（监管部门）</span>由"中立"转为"抵制"（原因为<span class="b">合规文档提交滞后</span>），立即通过<span class="k">变更请求</span>调整<span class="k">沟通管理计划</span>，增加与该方的正式沟通频率，及时化解风险。</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  五大过程组 × 十大知识领域 · 全部49个子过程 · 完整ITTO + 论文套用句式<br>
+  🔵蓝色=输入 &nbsp; 🟢绿色=工具与技术 &nbsp; 🟠橙色=输出 &nbsp; 🟣紫色=论文必写关键词
+</footer>
+</body></html>
